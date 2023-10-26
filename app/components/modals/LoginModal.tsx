@@ -1,6 +1,5 @@
 "use client";
 
-
 import { AiFillGithub } from "react-icons/ai";
 import { FcGoogle, FcDvdLogo } from "react-icons/fc";
 import { useCallback, useState } from "react";
@@ -35,15 +34,15 @@ const LoginModal = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    signIn('credentials', {
+    signIn("credentials", {
       ...data,
       redirect: false,
     }).then((callback) => {
       setIsLoading(false);
       if (callback?.ok) {
         toast.success("Logged In");
-        router.refresh();
         loginModal.onClose();
+        router.refresh();
       }
 
       if (callback?.error) {
