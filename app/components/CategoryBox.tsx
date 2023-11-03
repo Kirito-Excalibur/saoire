@@ -32,7 +32,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
       delete updatedQuery.category;
     }
 
-    const url = queryString.stringify(
+    const url = queryString.stringifyUrl(
       {
         url: "/",
         query: updatedQuery,
@@ -41,9 +41,10 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
     );
 
     router.push(url);
-  }, [label,params,router]);
+  }, [label, router, params]);
   return (
-    <div onClick={handleClick}
+    <div
+      onClick={handleClick}
       className={`flex flex-col items-center justify-center gap-2 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer ${
         selected ? "border-b-neutral-800" : "border-transparent"
       } ${selected ? "text-b-neutral-800" : "text-neutral-500"}`}
